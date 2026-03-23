@@ -1,16 +1,136 @@
-# React + Vite
+🚀 AI-Powered Full Stack Study Tracker (Advanced)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An advanced AI-driven study tracker and learning platform built using React, designed to help developers master the modern full-stack ecosystem with interactive learning, doubt solving, and mock interviews.
 
-Currently, two official plugins are available:
+🌐 Live Demo: https://interview-tracker-seven.vercel.app
+🧠 Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This application goes beyond a traditional study tracker by integrating:
 
-## React Compiler
+📚 Structured learning roadmap
+🤖 AI-powered explanations
+❓ Doubt-solving system
+🧪 Mock tests & interview preparation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+It helps users learn → practice → evaluate → improve in one place.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🚀 Features
+
+📚 Learning & Tracking
+Topic-wise structured roadmap
+Covers complete modern stack
+Track progress across topics
+Clean and interactive UI
+
+🤖 AI Integration
+Generate explanations for any topic
+Ask doubts per topic
+Instant AI responses
+API key-based setup
+
+❓ Doubt Solving System
+Dedicated Ask Doubt section
+Context-based AI answers
+Helps in deeper understanding
+
+🧪 Mock Tests & Interview Prep
+Generate mock tests dynamically
+Select:
+Topics
+Difficulty level
+Get 5–10 MCQ questions
+Evaluate your learning instantly
+
+🧠 Topics Covered
+JavaScript
+React
+TypeScript
+Next.js
+Data Structures and Algorithms
+Modern Full Stack Development
+
+🛠️ Tech Stack
+
+Frontend
+React (Vite)
+
+AI Integration
+LLM API (API key-based)
+
+Deployment
+Vercel
+
+⚙️ Setup Instructions
+
+1. Clone Repository
+git clone https://github.com/arjunpj-11/MERN-Advanced-Tracker
+cd your-repo-name
+2. Install Dependencies
+npm install
+3. Run Locally
+npm run dev
+4. Setup AI API
+Click on “Setup” in the app
+Enter your API key
+Save configuration
+Start using AI features
+
+🌐 Deployment
+
+This project is deployed on Vercel for fast and scalable hosting.
+
+https://interview-tracker-seven.vercel.app
+
+🔄 Application Flow
+
+Select topic
+Learn using AI-generated explanation
+Ask doubts if needed
+Track your progress
+Take mock test
+Evaluate your understanding
+
+✨ Key Highlights
+🧠 AI-powered learning assistant
+🎯 Topic-based structured learning
+❓ Built-in doubt solving
+🧪 Mock interview/test generator
+⚡ Fast and modern UI with React
+🌐 Live deployed on Vercel
+
+🔮 Future Enhancements
+Save progress using database
+User authentication system
+Performance analytics dashboard
+Coding challenge integration
+Voice-based AI assistant
+Real interview simulation
+
+🎯 Goal
+
+To build a complete developer learning ecosystem where users can:
+
+Learn concepts
+Clear doubts
+Test knowledge
+Prepare for interviews
+
+—all in one platform.
+
+🤝 Contributing
+
+Contributions are welcome! Feel free to fork and improve the project.
+
+📜 License
+
+This project is licensed under the MIT License.
+
+👨‍💻 Author
+
+Arjun PJ
+GitHub: https://github.com/arjunpj-11
+
+🙌 Acknowledgment
+
+This project combines AI + structured learning + evaluation, aiming to make mastering modern development faster and more effective.
