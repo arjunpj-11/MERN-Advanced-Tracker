@@ -12,4 +12,5 @@ export const CATEGORIES = {
   node:  { label: 'Node.js',       color: '#34d399' },
   mongo: { label: 'MongoDB',       color: '#a78bfa' },
   dsa:   { label: 'DSA',           color: '#f87171' },
+  sql: { label: 'SQL/PostgreSQL', color: '#34d399' },
 }

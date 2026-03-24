@@ -72,7 +72,7 @@
 .tag-next { color: #e8e8f0; background: rgba(232,232,240,0.08);border-color: rgba(232,232,240,0.2); }
 .tag-redux{ color: #c084fc; background: rgba(192,132,252,0.1); border-color: rgba(192,132,252,0.3); }
 .tag-new  { color: #34d399; background: rgba(52,211,153,0.1);  border-color: rgba(52,211,153,0.3); font-size: 9px; }
-
+.tag-sql { color: #34d399; background: rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.3); }
 /* Section Cards */
 .section-card {
   background: var(--surface);

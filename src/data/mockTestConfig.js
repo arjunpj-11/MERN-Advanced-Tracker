@@ -7,6 +7,7 @@ export const MOCK_CATEGORIES = [
   { id: 'mongodb', icon: '🍃', name: 'MongoDB', topics: ['Aggregation', 'Indexing', 'Schema Design', 'Transactions', 'Sharding', 'Mongoose'] },
   { id: 'dsa', icon: '📐', name: 'DSA', topics: ['Arrays & Strings', 'Linked Lists', 'Trees', 'Graphs', 'Dynamic Programming', 'Sorting', 'Binary Search', 'Hashing'] },
   { id: 'mixed', icon: '🎯', name: 'Mixed (All)', topics: ['JavaScript', 'TypeScript', 'React', 'Node.js', 'MongoDB', 'DSA', 'System Design'] },
+  { id: 'sql', icon: '🐘', name: 'SQL & PostgreSQL', topics: ['SELECT queries', 'JOINs', 'Aggregations', 'Indexes', 'Transactions', 'Window Functions', 'CTEs', 'ACID'] },
 ]
 
 export const DIFFICULTIES = [

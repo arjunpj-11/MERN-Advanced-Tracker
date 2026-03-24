@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useContext } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { renderMarkdown } from '../../utils/markdownRenderer'
 import { chatPrompt } from '../../utils/aiPrompts'
 
@@ -6,7 +6,7 @@ export default function AIChat({ topic, ai }) {
   const [messages, setMessages] = useState([
     {
       role: 'ai',
-      content: `Hi! I'm here to help you understand **${topic?.label}**. Ask me anything — concepts, examples, edge cases, interview tips, or anything else!`
+      content: `Hi! I'm here to help you understand **${topic?.label || 'this topic'}**. Ask me anything — concepts, examples, edge cases, interview tips!`
     }
   ])
   const [input, setInput] = useState('')
@@ -24,8 +24,8 @@ export default function AIChat({ topic, ai }) {
     setInput('')
     setThinking(true)
 
+    const history = messages.slice(1)
     const userMsg = { role: 'user', content: msg }
-    const history = messages.filter(m => m.role !== 'ai' || messages.indexOf(m) > 0)
     setMessages(prev => [...prev, userMsg, { role: 'ai', content: '' }])
 
     const prompt = chatPrompt(topic?.label, topic?.context, msg, history)
@@ -64,15 +64,37 @@ export default function AIChat({ topic, ai }) {
   }
 
   return (
-    <div className="ai-chat">
-      <div className="chat-messages">
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        minHeight: 0,
+        overflow: 'hidden',
+      }}
+    >
+      {/* Scrollable messages */}
+      <div
+        style={{
+          flex: 1,
+          overflowY: 'auto',
+          padding: '16px 20px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 14,
+          minHeight: 0,
+        }}
+      >
         {messages.map((msg, i) => (
           <div key={i} className={`chat-bubble ${msg.role}`}>
             {msg.role === 'ai' ? (
               <div
                 dangerouslySetInnerHTML={{
                   __html: msg.content
-                    ? renderMarkdown(msg.content) + (thinking && i === messages.length - 1 ? '<span class="ai-cursor"></span>' : '')
+                    ? renderMarkdown(msg.content) +
+                      (thinking && i === messages.length - 1
+                        ? '<span class="ai-cursor"></span>'
+                        : '')
                     : '<span class="ai-cursor"></span>'
                 }}
               />
@@ -84,15 +106,20 @@ export default function AIChat({ topic, ai }) {
         <div ref={bottomRef} />
       </div>
 
-      <div className="chat-input-wrap">
+      {/* Input — fixed at bottom */}
+      <div
+        className="chat-input-wrap"
+        style={{ flexShrink: 0 }}
+      >
         <textarea
           ref={textareaRef}
           className="chat-input"
-          placeholder="Ask a follow-up question... (Enter to send, Shift+Enter for newline)"
+          placeholder="Ask a follow-up question… (Enter to send, Shift+Enter for newline)"
           value={input}
           onChange={e => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           rows={1}
+          style={{ resize: 'none' }}
         />
         <button
           className="chat-send"

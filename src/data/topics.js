@@ -41,4 +41,10 @@ export const ALL_PAGE_ITEMS = [
   { pageId: 'dsa7',   cat: 'dsa',   items: ['gc1','gc2','gc3','gc4','gc5','gc6','gc7','gc8','gr1','gr2','gr3','tr1','tr2','tr3','tr4','tr5','cy1','cy2','cy3','tp1','tp2','tp3','tp4','sp1','sp2','sp3','sp4','mst1','mst2','mst3','mst4','if1','if2','if3','if4'] },
   { pageId: 'dsa8',   cat: 'dsa',   items: ['h1','h2','h3','h4','h5','h6','h7','h8','h9','h10','b1','b2','b3','b4','b5','b6','b7','b8','b9','b10'] },
   { pageId: 'dsa9',   cat: 'dsa',   items: ['sq1','sq2','sq3','mem1','mem2','mem3','str1','str2','str3','arr1','g1','g2','g3','uf1','uf2','uf3','if1','if2','if3','if4'] },
+  { pageId: 'sql1', cat: 'sql', items: ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13','s14','s15'] },
+  { pageId: 'sql2', cat: 'sql', items: ['j1','j2','j3','j4','j5','j6','j7','j8','j9','j10'] },
+  { pageId: 'sql3', cat: 'sql', items: ['a1','a2','a3','a4','a5','a6','a7','a8','a9','a10','a11','a12'] },
+  { pageId: 'sql4', cat: 'sql', items: ['i1','i2','i3','i4','i5','i6','i7','i8','i9','i10'] },
+  { pageId: 'sql5', cat: 'sql', items: ['t1','t2','t3','t4','t5','t6','t7','t8','t9'] },
+  { pageId: 'sql6', cat: 'sql', items: ['p1','p2','p3','p4','p5','p6','p7','p8','p9','p10','p11','p12','p13','p14'] },
 ]

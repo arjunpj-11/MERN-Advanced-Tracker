@@ -16,6 +16,11 @@ export default function AIPanel({ open, topic, onClose, ai }) {
   }, [open, topic])
 
   useEffect(() => {
+    // Reset to notes tab when new topic opens
+    if (open) setTab('notes')
+  }, [topic])
+
+  useEffect(() => {
     const handler = (e) => { if (e.key === 'Escape') onClose() }
     document.addEventListener('keydown', handler)
     return () => document.removeEventListener('keydown', handler)
@@ -26,24 +31,26 @@ export default function AIPanel({ open, topic, onClose, ai }) {
     setLoading(true)
     setContent('')
     setError(null)
-
     const prompt = studyNotesPrompt(topic.label, topic.context)
-
     ai.streamResponse(
       prompt,
       (text) => setContent(text),
       () => setLoading(false),
-      (err) => {
-        setLoading(false)
-        setError(err)
-      }
+      (err) => { setLoading(false); setError(err) }
     )
   }
 
+  const handleTabChange = (newTab) => {
+    setTab(newTab)
+    if (newTab === 'notes' && !content && !loading) {
+      fetchNotes()
+    }
+  }
+
   const errorMessage = (err) => {
-    if (err === 'no_key') return { icon: '🔑', title: 'API Key Required', msg: 'Add your free Groq API key to generate AI study notes.' }
-    if (err === 'invalid_key') return { icon: '🔑', title: 'Invalid API Key', msg: 'Your key was rejected. Please check and update it.' }
-    if (err === 'rate_limit') return { icon: '⏳', title: 'Rate Limit', msg: 'Free tier limit reached. Wait a moment and regenerate.' }
+    if (err === 'no_key')      return { icon: '🔑', title: 'API Key Required',  msg: 'Add your free Groq API key to generate AI study notes.' }
+    if (err === 'invalid_key') return { icon: '🔑', title: 'Invalid API Key',   msg: 'Your key was rejected. Please check and update it.' }
+    if (err === 'rate_limit')  return { icon: '⏳', title: 'Rate Limit',        msg: 'Free tier limit reached. Wait a moment and regenerate.' }
     return { icon: '⚠️', title: 'Error', msg: err }
   }
 
@@ -53,8 +60,12 @@ export default function AIPanel({ open, topic, onClose, ai }) {
         className={`ai-panel-backdrop ${open ? 'visible' : ''}`}
         onClick={onClose}
       />
-      <div className={`ai-panel ${open ? 'open' : ''}`}>
-        <div className="ai-panel-header">
+      <div
+        className={`ai-panel ${open ? 'open' : ''}`}
+        style={{ display: 'flex', flexDirection: 'column', height: '100vh', overflow: 'hidden' }}
+      >
+        {/* Header */}
+        <div className="ai-panel-header" style={{ flexShrink: 0 }}>
           <div className="ai-panel-icon">✦</div>
           <div className="ai-panel-title-wrap">
             <div className="ai-panel-topic">{topic?.label || 'AI Study Notes'}</div>
@@ -63,33 +74,35 @@ export default function AIPanel({ open, topic, onClose, ai }) {
           <button className="ai-panel-close" onClick={onClose}>✕</button>
         </div>
 
-        <div className="ai-panel-tabs">
+        {/* Tabs */}
+        <div className="ai-panel-tabs" style={{ flexShrink: 0 }}>
           <button
             className={`ai-tab ${tab === 'notes' ? 'active' : ''}`}
-            onClick={() => setTab('notes')}
+            onClick={() => handleTabChange('notes')}
           >
             📖 Study Notes
           </button>
           <button
             className={`ai-tab ${tab === 'chat' ? 'active' : ''}`}
-            onClick={() => setTab('chat')}
+            onClick={() => handleTabChange('chat')}
           >
             💬 Ask Doubts
           </button>
         </div>
 
+        {/* Body — must flex and scroll */}
         {tab === 'notes' ? (
           <>
-            <div className="ai-panel-body">
+            <div
+              className="ai-panel-body"
+              style={{ flex: 1, overflowY: 'auto', minHeight: 0 }}
+            >
               {loading && !content && (
                 <div className="ai-loading">
-                  <div className="ai-loading-dots">
-                    <span /><span /><span />
-                  </div>
+                  <div className="ai-loading-dots"><span /><span /><span /></div>
                   <div className="ai-loading-text">Generating study notes…</div>
                 </div>
               )}
-
               {error && !content && (
                 <div className="ai-error">
                   <div className="ai-error-icon">{errorMessage(error).icon}</div>
@@ -100,7 +113,6 @@ export default function AIPanel({ open, topic, onClose, ai }) {
                   </span>
                 </div>
               )}
-
               {content && (
                 <div
                   className="ai-content"
@@ -111,16 +123,16 @@ export default function AIPanel({ open, topic, onClose, ai }) {
                 />
               )}
             </div>
-
-            <div className="ai-panel-footer">
+            <div className="ai-panel-footer" style={{ flexShrink: 0 }}>
               <span className="ai-footer-note">⚡ Powered by Groq · llama-3.3-70b</span>
-              <button className="ai-regen-btn" onClick={fetchNotes}>
-                ↻ Regenerate
-              </button>
+              <button className="ai-regen-btn" onClick={fetchNotes}>↻ Regenerate</button>
             </div>
           </>
         ) : (
-          <AIChat topic={topic} ai={ai} />
+          /* Chat tab — takes remaining space */
+          <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+            <AIChat topic={topic} ai={ai} />
+          </div>
         )}
       </div>
     </>

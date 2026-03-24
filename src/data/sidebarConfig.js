@@ -87,6 +87,18 @@ export const SIDEBAR_CONFIG = [
       { id: 'dsa8', path: '/dsa8', icon: '🔑', label: 'Hashing & Bit Manip' },
       { id: 'dsa9', path: '/dsa9', icon: '📐', label: 'Advanced DSA Concepts' },
     ]
+  },
+  {
+    group: 'SQL / PostgreSQL',
+    cat: 'sql',
+    items: [
+      { id: 'sql1', path: '/sql1', icon: '🐘', label: 'SQL Fundamentals' },
+      { id: 'sql2', path: '/sql2', icon: '🔗', label: 'Joins & Relationships' },
+      { id: 'sql3', path: '/sql3', icon: '⚡', label: 'Advanced Queries' },
+      { id: 'sql4', path: '/sql4', icon: '📊', label: 'Indexes & Performance' },
+      { id: 'sql5', path: '/sql5', icon: '🔐', label: 'Transactions & ACID' },
+      { id: 'sql6', path: '/sql6', icon: '🐘', label: 'PostgreSQL Specific', isNew: true },
+    ]
   }
 ]
 

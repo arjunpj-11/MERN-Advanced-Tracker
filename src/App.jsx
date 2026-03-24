@@ -58,6 +58,13 @@ import DSA7 from './pages/tracker/DSA7'
 import DSA8 from './pages/tracker/DSA8'
 import DSA9 from './pages/tracker/DSA9'
 
+import SQL1 from './pages/tracker/SQL1'
+import SQL2 from './pages/tracker/SQL2'
+import SQL3 from './pages/tracker/SQL3'
+import SQL4 from './pages/tracker/SQL4'
+import SQL5 from './pages/tracker/SQL5'
+import SQL6 from './pages/tracker/SQL6'
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -107,6 +114,12 @@ export default function App() {
           <Route path="dsa8" element={<DSA8 />} />
           <Route path="dsa9" element={<DSA9 />} />
           <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="sql1" element={<SQL1 />} />
+<Route path="sql2" element={<SQL2 />} />
+<Route path="sql3" element={<SQL3 />} />
+<Route path="sql4" element={<SQL4 />} />
+<Route path="sql5" element={<SQL5 />} />
+<Route path="sql6" element={<SQL6 />} />
         </Route>
       </Routes>
     </BrowserRouter>
