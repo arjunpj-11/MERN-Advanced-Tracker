@@ -10,6 +10,13 @@ export const MOCK_CATEGORIES = [
   { id: 'sql', icon: '🐘', name: 'SQL & PostgreSQL', topics: ['SELECT queries', 'JOINs', 'Aggregations', 'Indexes', 'Transactions', 'Window Functions', 'CTEs', 'ACID'] },
 ]
 
+export const COMPLETED_TOPICS_CARD = {
+  id: 'completed',
+  icon: '🏆',
+  name: 'Completed Topics Test',
+  desc: 'Test your knowledge from topics you have already completed.'
+}
+
 export const DIFFICULTIES = [
   { id: 'easy',   label: 'Easy',   desc: 'Basic concepts & definitions' },
   { id: 'medium', label: 'Medium', desc: 'Practical usage & tricky behavior' },

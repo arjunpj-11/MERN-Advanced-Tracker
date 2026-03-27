@@ -18,7 +18,11 @@ export default function MockTest() {
     setPhase('loading')
     setLoadError(null)
 
-    const topicStr = category.topics.slice(0, 5).join(', ')
+    let selectedTopics = category.topics
+    if (category.id === 'completed') {
+      selectedTopics = [...category.topics].sort(() => 0.5 - Math.random())
+    }
+    const topicStr = selectedTopics.slice(0, 5).join(', ')
     const prompt = mockQuestionPrompt(`${category.name}: ${topicStr}`, difficulty, count)
 
     try {

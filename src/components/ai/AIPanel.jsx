@@ -10,15 +10,19 @@ export default function AIPanel({ open, topic, onClose, ai }) {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    if (open && topic && tab === 'notes') {
-      fetchNotes()
-    }
-  }, [open, topic])
-
-  useEffect(() => {
-    // Reset to notes tab when new topic opens
+    // 1. Reset state (and to notes tab) when new topic opens or switches
+    setContent('')
+    setError(null)
+    setLoading(false)
     if (open) setTab('notes')
   }, [topic])
+
+  useEffect(() => {
+    // 2. Fetch notes ONLY if we are in notes tab, have no content, and aren't already loading
+    if (open && topic && tab === 'notes' && !content && !loading && !error) {
+      fetchNotes()
+    }
+  }, [open, topic, tab, content, loading, error])
 
   useEffect(() => {
     const handler = (e) => { if (e.key === 'Escape') onClose() }
